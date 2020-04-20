@@ -84,26 +84,28 @@ public class LinkedListDeque<T> {
     public T removeFirst () {
         if (size == 0) return null;
 
+        Node oldfirstNode = sentinel.next;
         Node newfirstNode = sentinel.next.next;
         newfirstNode.prev = sentinel;
         sentinel.next = newfirstNode;
 
         size -= 1;
         if (size == 0) return null;
-        else return newfirstNode.item;
+        else return oldfirstNode.item;
     }
 
 
     public T removeLast () {
         if (size == 0) return null;
 
+        Node oldLastNode = sentinel.prev;
         Node newLastNode = sentinel.prev.prev;
         newLastNode.next = sentinel;
         sentinel.prev = newLastNode;
 
         size -= 1;
         if (size == 0) return null;
-        else return newLastNode.item;
+        else return oldLastNode.item;
     }
 
     public T get (int index) {

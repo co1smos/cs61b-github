@@ -41,7 +41,7 @@ public class ArrayDeque<T> {
 
 
     public boolean isEmpty () {
-        return size != 0;
+        return size == 0;
     }
 
 
@@ -118,6 +118,6 @@ public class ArrayDeque<T> {
             nextFirst = a.length - 1;
             nextLast = CopyLength;
         }
-
+        item = a;
     }
 }
