@@ -16,7 +16,8 @@ public class LinkedListDeque<T> {
 
 
     public LinkedListDeque (T value) {
-        sentinel = new Node(null, (T)63, null);//use 'null' if (T) does not work
+        //sentinel = new Node(null, (T)63, null);//use 'null' if (T) does not work
+        sentinel = new Node(null, null, null);
         Node L = new Node(sentinel, value, sentinel);
         //L.prev = sentinel;
         //L.next = sentinel;
@@ -29,7 +30,10 @@ public class LinkedListDeque<T> {
 
 
     public LinkedListDeque () {
-        sentinel = new Node(null, (T)63, null);//use 'null' if (T) does not work
+        //sentinel = new Node(null, (T)63, null);//use 'null' if (T) does not work
+        sentinel = new Node(null, null, null);
+        sentinel.prev = sentinel;
+        sentinel.next = sentinel;
         size = 0;
     }
 
@@ -59,7 +63,7 @@ public class LinkedListDeque<T> {
 
 
     public boolean isEmpty () {
-        return !size;
+        return size == 0 ;
     }
 
 
@@ -106,7 +110,9 @@ public class LinkedListDeque<T> {
         if (index < 0 || index > size-1) return null;
 
         Node temp = sentinel.next;
-        while (index--) temp = temp.next;
+        while (index-- > 0) {
+            temp = temp.next;
+        }
 
         return temp.item;
     }

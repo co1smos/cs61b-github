@@ -1,8 +1,8 @@
 public class ArrayDeque<T> {
-    public T[] item;
-    public int size;
-    public int nextFirst;
-    public int nextLast;
+    private T[] item;
+    private int size;
+    private int nextFirst;
+    private int nextLast;
 
 
     public ArrayDeque () {
@@ -25,7 +25,7 @@ public class ArrayDeque<T> {
     public void addFirst (T value) {
         item[nextFirst] = value;
         size++;
-        if (size == items.length) resize(item.length*2);
+        if (size == item.length) resize(item.length*2);
         //nextFirst--;
         nextFirst = (nextFirst-1)%item.length;
     }
@@ -34,14 +34,14 @@ public class ArrayDeque<T> {
     public void addLast (T value) {
         item[nextLast] = value;
         size++;
-        if (size == items.length) resize(item.length*2);
+        if (size == item.length) resize(item.length*2);
         //nextLast++;
         nextLast = (nextLast+1)%item.length;
     }
 
 
     public boolean isEmpty () {
-        return !size;
+        return size != 0;
     }
 
 
@@ -65,7 +65,7 @@ public class ArrayDeque<T> {
 
         nextFirst = (nextFirst+1)%item.length;
         T ReturnValue = item[nextFirst];
-        item[nextFirst] = 0;
+        item[nextFirst] = null;
         size--;
 
         if (size < item.length/4 && item.length >= 16) resize(item.length/2);
@@ -79,7 +79,7 @@ public class ArrayDeque<T> {
 
         nextLast = (nextLast-1)%item.length;
         T ReturnValue = item[nextLast];
-        item[nextLast] = 0;
+        item[nextLast] = null;
         size--;
 
         if (size < item.length/4 && item.length >= 16) resize(item.length/2);
@@ -93,17 +93,18 @@ public class ArrayDeque<T> {
     }
 
 
-    private static void resize (int newsize) {
+    //private static void resize (int newsize) {
+    private void resize (int newsize) {
         T [] a = (T []) new Object[newsize];
         System.arraycopy(item, 0, a, 0, nextLast);
 
         if (nextFirst > nextLast) {
             int CopyLengthLast = nextLast;
             int CopyLengthFirst = item.length - nextFirst - 1;
-            if (CopyLengthLast) {
+            if (CopyLengthLast != 0 ) {
                 System.arraycopy(item, 0, a, 0, CopyLengthLast);
             }
-            if (CopyLengthFirst) {
+            if (CopyLengthFirst != 0) {
                 System.arraycopy(item, item.length - CopyLengthFirst, a, a.length - CopyLengthFirst, CopyLengthLast);
             }
             nextFirst = a.length - CopyLengthFirst - 1;
@@ -111,8 +112,8 @@ public class ArrayDeque<T> {
 
         if (nextFirst < nextLast) {
             int CopyLength = nextLast - nextFirst - 1;
-            if (CopyLength) {
-                System.arraycopy(item, nextFirst+1, a, 0, CopyLengthLast);
+            if (CopyLength != 0) {
+                System.arraycopy(item, nextFirst+1, a, 0, CopyLength);
             }
             nextFirst = a.length - 1;
             nextLast = CopyLength;
