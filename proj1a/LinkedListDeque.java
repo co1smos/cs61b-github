@@ -14,7 +14,7 @@ public class LinkedListDeque<T> {
         }
     }
 
-
+    /**
     public LinkedListDeque (T value) {
         //sentinel = new Node(null, (T)63, null);//use 'null' if (T) does not work
         sentinel = new Node(null, null, null);
@@ -27,6 +27,7 @@ public class LinkedListDeque<T> {
         //sentinel.prev = L.next;
         //sentinel.next = L.prev;
     }
+     */
 
 
     public LinkedListDeque () {
@@ -90,8 +91,9 @@ public class LinkedListDeque<T> {
         sentinel.next = newfirstNode;
 
         size -= 1;
-        if (size == 0) return null;
-        else return oldfirstNode.item;
+        //if (size == 0) return null;
+        //else return oldfirstNode.item;
+        return oldfirstNode.item;
     }
 
 
@@ -104,8 +106,9 @@ public class LinkedListDeque<T> {
         sentinel.prev = newLastNode;
 
         size -= 1;
-        if (size == 0) return null;
-        else return oldLastNode.item;
+        //if (size == 0) return null;
+        //else return oldLastNode.item;
+        return oldLastNode.item;
     }
 
     public T get (int index) {

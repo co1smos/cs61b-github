@@ -9,10 +9,11 @@ public class ArrayDeque<T> {
         item = (T []) new Object[8];
         size = 0;
         nextLast = 0;
-        nextFirst = 8;
+        //nextFirst = 8;
+        nextFirst = 7;
     }
 
-
+    /**
     public ArrayDeque (T value) {
         item = (T []) new Object[8];
         size = 0;
@@ -20,6 +21,7 @@ public class ArrayDeque<T> {
         nextFirst = 8;
         addLast(value);
     }
+     */
 
 
     public void addFirst (T value) {
