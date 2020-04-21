@@ -27,19 +27,19 @@ public class ArrayDeque<T> {
     public void addFirst (T value) {
         item[nextFirst] = value;
         size++;
+        nextFirst = (nextFirst-1+item.length)%item.length;//to avoid -1
         if (size == item.length) resize(item.length*2);
         //nextFirst--;
         //nextFirst = (nextFirst-1)%item.length;
-        nextFirst = (nextFirst-1+item.length)%item.length;//to avoid -1
     }
 
 
     public void addLast (T value) {
         item[nextLast] = value;
         size++;
+        nextLast = (nextLast+1)%item.length;
         if (size == item.length) resize(item.length*2);
         //nextLast++;
-        nextLast = (nextLast+1)%item.length;
     }
 
 
