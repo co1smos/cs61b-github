@@ -102,8 +102,8 @@ public class ArrayDeque<T> {
         T [] a = (T []) new Object[newsize];
         System.arraycopy(item, 0, a, 0, nextLast);
 
-        int CopyLength;
-        int case_key;
+        int CopyLength = 0;
+        int case_key = 0;
         if (size == item.length) {
             if (nextLast < nextFirst) {
                 CopyLength = size;
@@ -137,6 +137,7 @@ public class ArrayDeque<T> {
                 }
                 nextFirst = a.length - 1;
                 nextLast = CopyLength;
+                break;
         }
         item = a;
 
