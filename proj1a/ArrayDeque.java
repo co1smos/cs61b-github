@@ -100,7 +100,7 @@ public class ArrayDeque<T> {
     //private static void resize (int newsize) {
     private void resize (int newsize) {
         T [] a = (T []) new Object[newsize];
-        System.arraycopy(item, 0, a, 0, nextLast);
+        //System.arraycopy(item, 0, a, 0, nextLast);
 
         int CopyLength = 0;
         int case_key = 0;
